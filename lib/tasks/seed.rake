@@ -22,23 +22,25 @@ namespace :add do
   end
 end
 
+# 1
+start_date = Date.today.to_date.beginning_of_day
+end_date = Date.today.to_date.end_of_day
+Document.where('created_at BETWEEN ? AND ?', start_date, end_date)
 
-# # 2 
-# red_keyword = Keyword.find_by_name('red')
-# red_keyword.document_keywords
 
-# # 3
-# blue_keyword = Keyword.find_by_name('blue')
-# blue_keyword.document_keywords
+# 2 
+red_keyword = Keyword.find_by_name('red')
+red_keyword.document_keywords
 
-# # 4
-# keywords = Keyword.where(name: ['red','blue'])
-# DocumentKeyword.where(keyword_id: keywords.ids)
+# 3
+blue_keyword = Keyword.find_by_name('blue')
+blue_keyword.document_keywords
 
-# # 5
-# red_keyword = Keyword.find_by_name('red')
-# blue_keyword = Keyword.find_by_name('blue')
+# 4
+keywords = Keyword.where(name: ['red','blue'])
+DocumentKeyword.where(keyword_id: keywords.ids)
 
-# DocumentKeyword.select {|doc_key| doc_key.keywords.ids.include?(red_keyword.id) && doc_key.keywords.ids.include?(blue_keyword.id) }
-
-#######################################################
+# 5
+red_keyword = Keyword.find_by_name('red')
+blue_keyword = Keyword.find_by_name('blue')
+red_keyword.documents && blue_keyword.documents
